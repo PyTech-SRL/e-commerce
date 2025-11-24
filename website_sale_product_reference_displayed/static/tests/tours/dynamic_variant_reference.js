@@ -30,7 +30,7 @@ odoo.define(
                 },
                 {
                     content: "Check the Internal Reference of the 1st variant",
-                    trigger: "span.js_variant_reference_displayed:contains(TESTREF1)",
+                    trigger: "select.js_variant_reference_displayed:contains(TESTREF1)",
                 },
                 {
                     content: "Click on the second attribute value",
@@ -44,8 +44,8 @@ odoo.define(
                     run: function () {},
                 },
                 {
-                    content: "Check the Internal Reference of the 2st variant",
-                    trigger: "span.js_variant_reference_displayed:contains(TESTREF2)",
+                    content: "Check the Internal Reference of the 2nd variant",
+                    trigger: "select.js_variant_reference_displayed:contains(TESTREF2)",
                 },
             ]
         );

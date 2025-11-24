@@ -52,15 +52,26 @@
         customize_show="True"
     >
         <!-- Combination description -->
-        <xpath expr="//div/p[@t-field='product.description_sale']" position="after">
+        <xpath expr="//t[@t-call='website_sale.product_price']" position="before">
             <p
-                t-attf-class="text-muted js_variant_reference_displayed_parent {{'' if product_variant.default_code else 'd-none'}}"
+                t-attf-class="js_variant_reference_displayed_parent {{'' if product_variant.default_code else 'd-none'}}"
             >
-                Internal Reference:
-                <span
-                    class="js_variant_reference_displayed"
-                    t-field="product_variant.default_code"
-                />
+                <label for="internal_reference">
+                    <strong>Internal Reference</strong>
+                </label>
+                <select
+                    class="form-control js_variant_reference_displayed"
+                    name="internal_reference"
+                >
+                    <option
+                        t-foreach="product.product_variant_ids"
+                        t-as="variant"
+                        t-esc="variant.default_code"
+                        t-att-value="variant.id"
+                        t-att-data-combination="{str(ptav.attribute_id.id): ptav.id for ptav in variant.product_template_attribute_value_ids}"
+                        t-att-selected="variant.default_code == product_variant.default_code"
+                    />
+                </select>
             </p>
         </xpath>
     </template>
